@@ -3,6 +3,7 @@ const p2Button = document.querySelector('#p2Button');
 const pingpong1 = document.querySelector('#pingpong1');
 const pingpong2 = document.querySelector('#pingpong2');
 const resetButton = document.querySelector('#resetButton');
+const maxScore = document.querySelector('#maxScore');
 
 let p1Score = 0;
 let p2Score = 0;
@@ -20,6 +21,7 @@ p1Button.addEventListener('click', () => {
   };
   // console.log(p1Score);
 });
+
 p2Button.addEventListener('click', () => {
   // console.log('You clicked p2');
   if(!isGameOver) {
@@ -31,10 +33,18 @@ p2Button.addEventListener('click', () => {
   };
   // console.log(p2Score);
 });
-resetButton.addEventListener("click", () => {
+
+resetButton.addEventListener('click', reset);
+
+maxScore.addEventListener('change', () => {
+  topScore = parseInt(maxScore.value);
+  reset();
+});
+
+function reset () {
   pingpong1.textContent = 0;
   pingpong2.textContent = 0;
   p1Score = 0;
   p2Score = 0;
   isGameOver = false;
-})
+}
