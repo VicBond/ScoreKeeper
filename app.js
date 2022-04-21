@@ -16,6 +16,8 @@ p1Button.addEventListener('click', () => {
     p1Score++;
       if(p1Score === topScore) {
         isGameOver = true;
+        pingpong1.classList.add('winner');
+        pingpong2.classList.add('loser');
       }
     pingpong1.textContent = p1Score;
   };
@@ -28,6 +30,8 @@ p2Button.addEventListener('click', () => {
     p2Score++;
       if(p2Score === topScore) {
         isGameOver = true;
+        pingpong2.classList.add('winner');
+        pingpong1.classList.add('loser');
       }
     pingpong2.textContent = p2Score;
   };
@@ -47,4 +51,6 @@ function reset () {
   p1Score = 0;
   p2Score = 0;
   isGameOver = false;
+  pingpong1.classList.remove('winner', 'loser');
+  pingpong2.classList.remove('loser', 'winner');
 };
