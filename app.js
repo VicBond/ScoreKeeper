@@ -2,6 +2,7 @@ const p1Button = document.querySelector('#p1Button');
 const p2Button = document.querySelector('#p2Button');
 const pingpong1 = document.querySelector('#pingpong1');
 const pingpong2 = document.querySelector('#pingpong2');
+const resetButton = document.querySelector('#resetButton');
 
 let p1Score = 0;
 let p2Score = 0;
@@ -30,3 +31,10 @@ p2Button.addEventListener('click', () => {
   };
   // console.log(p2Score);
 });
+resetButton.addEventListener("click", () => {
+  pingpong1.textContent = 0;
+  pingpong2.textContent = 0;
+  p1Score = 0;
+  p2Score = 0;
+  isGameOver = false;
+})
