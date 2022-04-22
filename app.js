@@ -18,6 +18,8 @@ p1Button.addEventListener('click', () => {
         isGameOver = true;
         pingpong1.classList.add('winner');
         pingpong2.classList.add('loser');
+        p1Button.disabled = true;
+        p2Button.disabled = true;
       }
     pingpong1.textContent = p1Score;
   };
@@ -32,6 +34,8 @@ p2Button.addEventListener('click', () => {
         isGameOver = true;
         pingpong2.classList.add('winner');
         pingpong1.classList.add('loser');
+        p1Button.disabled = true;
+        p2Button.disabled = true;
       }
     pingpong2.textContent = p2Score;
   };
@@ -53,4 +57,6 @@ function reset () {
   isGameOver = false;
   pingpong1.classList.remove('winner', 'loser');
   pingpong2.classList.remove('loser', 'winner');
+  pingpong1.disabled = false;
+  pingpong2.disabled = false;
 };
