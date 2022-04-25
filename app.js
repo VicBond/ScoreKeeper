@@ -20,35 +20,51 @@ const maxScore = document.querySelector('#maxScore');
 let topScore = 5;
 let isGameOver = false;
 
-p1Button.addEventListener('click', () => {
-  // console.log('You clicked p1');
+function updateScores(player, opponent) {
   if(!isGameOver) {
-    p1Score++;
-      if(p1Score === topScore) {
+    player.score++;
+      if(player.score === topScore) {
         isGameOver = true;
-        pingpong1.classList.add('winner');
-        pingpong2.classList.add('loser');
-        p1Button.disabled = true;
-        p2Button.disabled = true;
+        player.display.classList.add('winner');
+        opponent.display.classList.add('loser');
+        player.button.disabled = true;
+        opponent.button.disabled = true;
       }
-    pingpong1.textContent = p1Score;
+    player.display.textContent = player.score;
   };
+}
+
+p1Button.addEventListener('click', () => {
+  updateScores(p1,p2)
+  // console.log('You clicked p1');
+  // if(!isGameOver) {
+  //   p1Score++;
+  //     if(p1Score === topScore) {
+  //       isGameOver = true;
+  //       pingpong1.classList.add('winner');
+  //       pingpong2.classList.add('loser');
+  //       p1Button.disabled = true;
+  //       p2Button.disabled = true;
+  //     }
+  //   pingpong1.textContent = p1Score;
+  // };
   // console.log(p1Score);
 });
 
 p2Button.addEventListener('click', () => {
+  updateScores(p2,p1)
   // console.log('You clicked p2');
-  if(!isGameOver) {
-    p2Score++;
-      if(p2Score === topScore) {
-        isGameOver = true;
-        pingpong2.classList.add('winner');
-        pingpong1.classList.add('loser');
-        p1Button.disabled = true;
-        p2Button.disabled = true;
-      }
-    pingpong2.textContent = p2Score;
-  };
+  // if(!isGameOver) {
+  //   p2Score++;
+  //     if(p2Score === topScore) {
+  //       isGameOver = true;
+  //       pingpong2.classList.add('winner');
+  //       pingpong1.classList.add('loser');
+  //       p1Button.disabled = true;
+  //       p2Button.disabled = true;
+  //     }
+  //   pingpong2.textContent = p2Score;
+  // };
   // console.log(p2Score);
 });
 
