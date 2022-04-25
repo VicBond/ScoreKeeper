@@ -8,15 +8,10 @@ const p2 = {
   button: document.querySelector('#p2Button'),
   display: document.querySelector('#pingpong2') 
 }
-// const p1Button = document.querySelector('#p1Button');
-// const p2Button = document.querySelector('#p2Button');
-// const pingpong1 = document.querySelector('#pingpong1');
-// const pingpong2 = document.querySelector('#pingpong2');
+
 const resetButton = document.querySelector('#resetButton');
 const maxScore = document.querySelector('#maxScore');
 
-// let p1Score = 0;
-// let p2Score = 0;
 let topScore = 5;
 let isGameOver = false;
 
@@ -34,38 +29,12 @@ function updateScores(player, opponent) {
   };
 }
 
-p1Button.addEventListener('click', () => {
+p1.button.addEventListener('click', () => {
   updateScores(p1,p2)
-  // console.log('You clicked p1');
-  // if(!isGameOver) {
-  //   p1Score++;
-  //     if(p1Score === topScore) {
-  //       isGameOver = true;
-  //       pingpong1.classList.add('winner');
-  //       pingpong2.classList.add('loser');
-  //       p1Button.disabled = true;
-  //       p2Button.disabled = true;
-  //     }
-  //   pingpong1.textContent = p1Score;
-  // };
-  // console.log(p1Score);
 });
 
-p2Button.addEventListener('click', () => {
+p2.button.addEventListener('click', () => {
   updateScores(p2,p1)
-  // console.log('You clicked p2');
-  // if(!isGameOver) {
-  //   p2Score++;
-  //     if(p2Score === topScore) {
-  //       isGameOver = true;
-  //       pingpong2.classList.add('winner');
-  //       pingpong1.classList.add('loser');
-  //       p1Button.disabled = true;
-  //       p2Button.disabled = true;
-  //     }
-  //   pingpong2.textContent = p2Score;
-  // };
-  // console.log(p2Score);
 });
 
 resetButton.addEventListener('click', reset);
@@ -76,13 +45,23 @@ maxScore.addEventListener('change', () => {
 });
 
 function reset () {
-  pingpong1.textContent = 0;
-  pingpong2.textContent = 0;
-  p1Score = 0;
-  p2Score = 0;
   isGameOver = false;
-  pingpong1.classList.remove('winner', 'loser');
-  pingpong2.classList.remove('loser', 'winner');
-  pingpong1.disabled = false;
-  pingpong2.disabled = false;
+
+  for(let p of [p1, p2]) {
+    p.display.textContent = 0;
+    p.score = 0;
+    p.display.classList.remove('winner', 'loser');
+    p.button.disabled = false;
+  }
+
+
+
+  // p1.display.textContent = 0;
+  // p2.display.textContent = 0;
+  // p1.score = 0;
+  // p2.score = 0;
+  // p1.display.classList.remove('winner', 'loser');
+  // p2.display.classList.remove('loser', 'winner');
+  // p1.button.disabled = false;
+  // p2.button.disabled = false;
 };
